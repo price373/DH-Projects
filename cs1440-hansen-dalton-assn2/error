@@ -1,0 +1,98 @@
+Creating data/TMP_people.csv with built-in paste tool...
+    Pasting together data/names8 data/ages8 data/colors8 data/verbs8
+Creating data/TMP_kids.csv with built-in paste tool...
+    Pasting together data/num10 data/names10 data/words5
+TEST$ python src/tt.py cut
+	tt.py cut [-f LIST] FILENAME...  	    	       
+    Remove comma-separated sections from each line of files  	    	       
+    -f  List of comma-separated integers indicating fields to output (default is LIST=1)
+TEST$ python src/tt.py cut data/TMP_people.csv
+Name
+Adrianna
+Julian
+Tiffany
+Savannah
+Abraham
+Michael
+Marcus
+Julianna
+TEST$ python src/tt.py cut -f 2 data/TMP_people.csv
+Age
+22
+36
+24
+39
+26
+23
+29
+17
+TEST$ python src/tt.py cut -f 2,4 data/TMP_people.csv
+Age,Locomotion Style
+22,crawl
+36,traipse
+24,push
+39,march
+26,trot
+23,lurch
+29,slink
+17,wriggle
+TEST$ python src/tt.py cut -f 4,2 data/TMP_people.csv
+Age,Locomotion Style
+22,crawl
+36,traipse
+24,push
+39,march
+26,trot
+23,lurch
+29,slink
+17,wriggle
+TEST$ python src/tt.py cut -f 2 data/TMP_kids.csv data/TMP_people.csv
+Jerry
+Bailey
+Frank
+Kai
+Angela
+Mikayla
+Hazel
+Karen
+Alexa
+Isabel
+Age
+22
+36
+24
+39
+26
+23
+29
+17
+TEST$ python src/tt.py cut -f 13 data/TMP_people.csv
+Traceback (most recent call last):
+  File "\\wsl$\Ubuntu\home\price373\cs1440-hansen-dalton-assn2\src\tt.py", line 53, in <module>
+    cut(sys.argv[2:])
+  File "\\wsl$\Ubuntu\home\price373\cs1440-hansen-dalton-assn2\src\CutPaste.py", line 53, in cut
+    displayValues.append(valueList[int(number)-1])
+IndexError: list index out of range
+TEST$ python src/tt.py cut -f 3 data/TMP_kids.csv
+babbles
+sneakiness
+trimly
+agree
+frankly
+
+
+
+
+
+TEST$ python src/tt.py cut data/let3 DOES_NOT_EXIST data/complexity
+a
+b
+c
+Traceback (most recent call last):
+  File "\\wsl$\Ubuntu\home\price373\cs1440-hansen-dalton-assn2\src\tt.py", line 53, in <module>
+    cut(sys.argv[2:])
+  File "\\wsl$\Ubuntu\home\price373\cs1440-hansen-dalton-assn2\src\CutPaste.py", line 48, in cut
+    file = open(filePath)
+FileNotFoundError: [Errno 2] No such file or directory: 'DOES_NOT_EXIST'
+Removing data/TMP_people.csv...
+Removing data/TMP_kids.csv...
